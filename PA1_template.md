@@ -60,7 +60,7 @@ plot(names(spi),spi, type="l")
 ![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)
 
 
-The maximum number of steps representing the 5-minute interval
+The 5-minute interval representing the maximum number of steps
 
 ```r
 names(spi[which.max(spi)])
@@ -81,7 +81,7 @@ length(which(is.na(act)))
 ## [1] 2304
 ```
 
-Missing values are replaced with the mean for that 5-minute interval
+Missing values are replaced with the mean for that 5-minute interval as shown below
 
 ```r
 act[which(is.na(act$steps)),]$steps <- tapply(act$steps,act$interval,mean, na.rm=TRUE)
@@ -132,6 +132,7 @@ act <- cbind(act,wd)
 d <- aggregate(act$steps, by = list(act$interval,act$wd), FUN="mean")
 ```
 
+Generating panel plot
 
 ```r
 library(lattice)

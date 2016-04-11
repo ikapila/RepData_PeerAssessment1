@@ -40,7 +40,7 @@ plot(names(spi),spi, type="l")
 ```
 
 
-The maximum number of steps representing the 5-minute interval
+The 5-minute interval representing the maximum number of steps
 ```{r, echo = TRUE}
 names(spi[which.max(spi)])
 ```
@@ -51,7 +51,7 @@ The total number of missing values
 length(which(is.na(act)))
 ```
 
-Missing values are replaced with the mean for that 5-minute interval
+Missing values are replaced with the mean for that 5-minute interval as shown below
 ```{r, echo = TRUE}
 act[which(is.na(act$steps)),]$steps <- tapply(act$steps,act$interval,mean, na.rm=TRUE)
 head(act)
@@ -73,6 +73,7 @@ act <- cbind(act,wd)
 d <- aggregate(act$steps, by = list(act$interval,act$wd), FUN="mean")
 ```
 
+Generating panel plot
 ```{r, echo = TRUE}
 library(lattice)
 xyplot(x~Group.1|Group.2, data=d, layout=c(1,2), type="l")
