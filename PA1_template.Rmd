@@ -15,6 +15,7 @@ act <- transform(act, date=as.Date(as.character(date)))
 ```
 
 ## What is mean total number of steps taken per day?
+
 Total number of steps taken per day is represented by spd
 ```{r, echo = TRUE}
 spd <- with(act, tapply(steps, date, sum, na.rm = TRUE))
@@ -32,6 +33,7 @@ median(spd)
 ```
 
 ## What is the average daily activity pattern?
+
 ```{r, echo = TRUE}
 spi <- with(act, tapply(steps, interval, mean, na.rm=TRUE))
 plot(names(spi),spi, type="l")
@@ -74,4 +76,5 @@ d <- aggregate(act$steps, by = list(act$interval,act$wd), FUN="mean")
 ```{r, echo = TRUE}
 library(lattice)
 xyplot(x~Group.1|Group.2, data=d, layout=c(1,2), type="l")
+
 ```

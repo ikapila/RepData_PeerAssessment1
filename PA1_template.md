@@ -11,6 +11,7 @@ act <- transform(act, date=as.Date(as.character(date)))
 ```
 
 ## What is mean total number of steps taken per day?
+
 Total number of steps taken per day is represented by spd
 
 ```r
@@ -49,6 +50,7 @@ median(spd)
 ```
 
 ## What is the average daily activity pattern?
+
 
 ```r
 spi <- with(act, tapply(steps, interval, mean, na.rm=TRUE))
